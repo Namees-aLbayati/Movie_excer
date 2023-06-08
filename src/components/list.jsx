@@ -65,8 +65,8 @@ setActKeanu(keanWithoutHisId)
 
   return (
     <>
-    <ul class="list-group">
-  <li class="list-group-item active" aria-current="true">Matching actors</li>
+    <ul className="list-group">
+  <li className="list-group-item active" aria-current="true">Matching actors</li>
 <LiComponents matchingIds={matchingIds}/>
 </ul>
     </>
