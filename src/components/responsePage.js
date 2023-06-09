@@ -19,9 +19,10 @@ const perpairResult=(movie)=>{
         movieObj.actors.forEach((actorId) => {
          const actor = resultFirst.find((actor) => actor.actorId === actorId);
           if (actor) {
-            matchingActors.push({ actorId, title: movieObj.title });
+            console.log(movieObj)
+            matchingActors.push({id:actorId,name:actor.name,KRMovies:[movieObj.title]});
           }
-          console.log(actorId,'uuj inside keanu')
+         // console.log(actorId,'uuj inside keanu')
         });
 
       });
