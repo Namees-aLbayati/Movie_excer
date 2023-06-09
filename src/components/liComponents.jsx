@@ -1,21 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-/*data should be like this  {
-"Name": "Willem Dafoe",
-"Movies":[],
-"KRMovies": [
-"The Matrix",
-"The Matrix Revolutions"
-]
-,"NCMovies": []
- 
-    }*/
+import ResponsePage from "./responsePage";
 const LiComponents=(data)=>{
     const mainId=data.mainActIds;
     let movies=data.movies;
     const matchingIds=data.matchingIds
     const [actors,setActor]=useState([])
+
+const [matchingMovieKeanState,setKean]=useState([]);
+const [matchingMovieNicolasState,setNicols]=useState([]);
+const [matcingActNamesState,setMatchingNames]=useState([]);
+
+
 
 useEffect(()=>{
    
@@ -38,13 +35,9 @@ const namesActors = result.filter(item => ids.includes(item.actorId));
 
     setActor(namesActors)
 
-//console.log('movies',movies)
 
-//console.log('names actors',namesActors)
-//console.log('main actors ids and names',mainId)
 if(mainId.length!==0){
 const nicID = mainId[0].actorId
-//nicolas
 const keanuID=mainId[1].actorId
 const matchingMovies = movies.filter(movie => {
     const hasNcId = movie.actors.includes(nicID);
@@ -77,9 +70,12 @@ return namesActors.some(actor => movie.actors.includes(actor.actorId));
 console.log('matching keanu',matchingfinalKean)
 console.log('matching nic ',matchingfinalNic)
 console.log('matching act',namesActors)
-namesActors.map(data=>{
+setKean(matchingfinalKean);
+setNicols(matchingfinalNic)
+setMatchingNames(namesActors)
+/*namesActors.map(data=>{
     setActor({...data,Movies:[],NCMovies:[],KRMovies:[]})
-})
+})*/
 }
 
 }
@@ -126,10 +122,31 @@ const checkValidation = async (actors) => {
   
 
 
+  const renderActors = () => {
+    let arr=[]
+    console.log(actors,'loading actors')
+if(actors.length>1){
+
+for(let i=0;i<actors.length;i++){
+    console.log('push',actors[i])
+arr.push(<li key={i}>{i+1} {actors[i].name}</li>)
+}
+}else{
+return `Data Coming soon`
+}
+return arr
+};
+
+
+
+
+
+
+
 return(
     <>
-    <li className="list-group-item " aria-current="true">Matching actors</li>
-    <li className="list-group-item " aria-current="true">Matching actors</li>
+{renderActors()}
+<ResponsePage  matchingNames={matcingActNamesState} matchingKean={matchingMovieKeanState} matchingNic={matchingMovieNicolasState} />
 </>
 )
 }
