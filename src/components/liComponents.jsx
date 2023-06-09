@@ -1,7 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-const LiComponents=({matchingIds})=>{
+/*data should be like this  {
+"Name": "Willem Dafoe",
+"Movies":[],
+"KRMovies": [
+"The Matrix",
+"The Matrix Revolutions"
+]
+,"NCMovies": []
+ 
+    }*/
+const LiComponents=(data)=>{
+    const mainId=data.mainActIds;
+    console.log('maun id li componenet',mainId)
+    let movies=data.movies;
+    const matchingIds=data.matchingIds
     const [actors,setActor]=useState([])
 
 useEffect(()=>{
@@ -21,24 +35,34 @@ const getActorsData=async(ids)=>{
 
 
 const result=await response.json();
-const result2 = result.filter(item => ids.includes(item.actorId));
-    setActor(result2)
+const namesActors = result.filter(item => ids.includes(item.actorId));
+
+    setActor(namesActors)
+
+
+    //console.log('movies',movies)
+
+console.log('names actors',namesActors)
+
+
+
 
 }
 useEffect(()=>{
-checkValidation(actors)
+    
+        if (actors.length === 0) {
+          console.log('actors array is empty');
+          return;
+        }
+//checkValidation(actors)
 },[actors])
 
 
 
 const checkValidation = async (actors) => {
-    try {
-      if (actors.length === 0) {
-        console.log('actors array is empty');
-        return;
-      }
   
-      console.log(actors, 'act');
+  try{
+      console.log(actors, 'act check validate');
   
       const response = await fetch(
         'https://switch-yam-equator.azurewebsites.net/api/validation',

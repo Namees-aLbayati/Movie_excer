@@ -4,7 +4,8 @@ const List = ({ actor }) => {
   const [actWithNicols, setActNicolas] = useState([]);
   const [actWithKeanu, setActKeanu] = useState([]);
   const [matchingIds, setMatchingIds] = useState([]);
-  
+  const [movies,setMovies]=useState([])
+
   useEffect(() => {
     if (actor.length !== 0) {
       fetchMovie();
@@ -31,7 +32,7 @@ const List = ({ actor }) => {
       }
     );
     const data = await response.json();
-
+setMovies(data)
     const filteredNicolas = data.filter((movie) =>
       movie.actors.includes(actor[0].actorId)
     );
@@ -67,7 +68,7 @@ setActKeanu(keanWithoutHisId)
     <>
     <ul className="list-group">
   <li className="list-group-item active" aria-current="true">Matching actors</li>
-<LiComponents matchingIds={matchingIds}/>
+<LiComponents matchingIds={matchingIds} movies={movies} mainActIds={actor}/>
 </ul>
     </>
   );

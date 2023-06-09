@@ -3,7 +3,6 @@ import List from './list';
 const Home=()=>{
 const [actor,setActor]=useState([])
 
-
 useEffect(() => {
   fetch('https://switch-yam-equator.azurewebsites.net/api/actors', {
     method: 'GET',
@@ -12,10 +11,12 @@ useEffect(() => {
     }
   })
     .then(response => response.json()).then((data) => {
+      
     const filteredActors = data.filter(
       (element) =>
         element.name === 'Nicolas Cage' || element.name === 'Keanu Reeves'
     );
+    console.log(filteredActors,'id needeed')
     setActor(filteredActors);
   });
 }, []); 
