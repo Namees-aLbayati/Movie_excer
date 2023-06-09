@@ -13,7 +13,6 @@ import { useEffect } from "react";
     }*/
 const LiComponents=(data)=>{
     const mainId=data.mainActIds;
-    console.log('maun id li componenet',mainId)
     let movies=data.movies;
     const matchingIds=data.matchingIds
     const [actors,setActor]=useState([])
@@ -39,13 +38,49 @@ const namesActors = result.filter(item => ids.includes(item.actorId));
 
     setActor(namesActors)
 
+//console.log('movies',movies)
 
-    //console.log('movies',movies)
+//console.log('names actors',namesActors)
+//console.log('main actors ids and names',mainId)
+if(mainId.length!==0){
+const nicID = mainId[0].actorId
+//nicolas
+const keanuID=mainId[1].actorId
+const matchingMovies = movies.filter(movie => {
+    const hasNcId = movie.actors.includes(nicID);
 
-console.log('names actors',namesActors)
+    
+    
+    return hasNcId
+  });
+const matchingfinalNic=matchingMovies.filter(movie=>{
+
+return namesActors.some(actor => movie.actors.includes(actor.actorId));
 
 
+})
 
+
+const matchingMoviesK = movies.filter(movie => {
+    const hasNcId = movie.actors.includes(keanuID);
+
+    
+    
+    return hasNcId
+  });
+const matchingfinalKean=matchingMoviesK.filter(movie=>{
+
+return namesActors.some(actor => movie.actors.includes(actor.actorId));
+
+
+})
+console.log('matching keanu',matchingfinalKean)
+console.log('matching nic ',matchingfinalNic)
+console.log('matching act',namesActors)
+namesActors.map(data=>{
+    setActor({...data,Movies:[],NCMovies:[],KRMovies:[]})
+})
+}
 
 }
 useEffect(()=>{
@@ -54,6 +89,7 @@ useEffect(()=>{
           console.log('actors array is empty');
           return;
         }
+       // console.log('new set act',actors)
 //checkValidation(actors)
 },[actors])
 
