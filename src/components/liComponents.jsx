@@ -6,6 +6,7 @@ const LiComponents=(data)=>{
     const mainId=data.mainActIds;
     let movies=data.movies;
     const matchingIds=data.matchingIds
+    console.log('test',mainId,movies,matchingIds)
     const [actors,setActor]=useState([])
 
 const [matchingMovieKeanState,setKean]=useState([]);
@@ -67,9 +68,9 @@ return namesActors.some(actor => movie.actors.includes(actor.actorId));
 
 
 })
-console.log('matching keanu',matchingfinalKean)
-console.log('matching nic ',matchingfinalNic)
-console.log('matching act',namesActors)
+//console.log('matching keanu',matchingfinalKean)
+//console.log('matching nic ',matchingfinalNic)
+//console.log('matching act',namesActors)
 setKean(matchingfinalKean);
 setNicols(matchingfinalNic)
 setMatchingNames(namesActors)
@@ -82,7 +83,7 @@ setMatchingNames(namesActors)
 useEffect(()=>{
     
         if (actors.length === 0) {
-          console.log('actors array is empty');
+         // console.log('actors array is empty');
           return;
         }
        // console.log('new set act',actors)
@@ -94,7 +95,7 @@ useEffect(()=>{
 const checkValidation = async (actors) => {
   
   try{
-      console.log(actors, 'act check validate');
+    //  console.log(actors, 'act check validate');
   
       const response = await fetch(
         'https://switch-yam-equator.azurewebsites.net/api/validation',
@@ -113,9 +114,9 @@ const checkValidation = async (actors) => {
       }
   
       const showingResult = await response.json();
-      console.log(showingResult, 'validate results');
+     // console.log(showingResult, 'validate results');
     } catch (error) {
-      console.error('An error occurred:', error.message);
+     // console.error('An error occurred:', error.message);
     }
   };
   
@@ -124,11 +125,11 @@ const checkValidation = async (actors) => {
 
   const renderActors = () => {
     let arr=[]
-    console.log(actors,'loading actors')
+    //console.log(actors,'loading actors')
 if(actors.length>1){
 
 for(let i=0;i<actors.length;i++){
-    console.log('push',actors[i])
+  //  console.log('push',actors[i])
 arr.push(<li key={i}>{i+1} {actors[i].name}</li>)
 }
 }else{
