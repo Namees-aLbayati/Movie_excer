@@ -1,6 +1,6 @@
 # The test has been completed 100%, as shown in the screenshots below
-<img width="1087" alt="Screenshot 2023-06-10 at 12 04 09 AM" src="https://github.com/Namees-aLbayati/Mo<img width="902" alt="Screenshot 2023-06-10 at 12 12 13 AM"
-vie_excer/assets/95061565/b0027497-a4e8-4293-a560-8ff5960bb713">
+<img width="1078" alt="Screenshot 2023-06-10 at 12 13 14 AM" src="https://github.com/Namees-aLbayati/Movie_excer/assets/95061565/4c83c079-5a24-498f-9f56-557a9a295a1f">
+<img width="908" alt="Screenshot 2023-06-10 at 12 13 26 AM" src="https://github.com/Namees-aLbayati/Movie_excer/assets/95061565/224f7a85-c0e6-47de-af52-97a5c54033d7">
 
 # steps for running the excersice,please follow these  guidelines:
 
